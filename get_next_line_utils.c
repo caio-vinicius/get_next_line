@@ -6,7 +6,7 @@
 /*   By: csouza-f <csouza-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 17:46:21 by csouza-f          #+#    #+#             */
-/*   Updated: 2020/04/20 13:36:18 by caio             ###   ########.fr       */
+/*   Updated: 2020/04/20 18:26:03 by caio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char    *ft_strjoin(char *s1, char *s2)
 					j++;
 				}
 			str[i] = '\0';
-			free(s2);
+			//free(s2);
 			return (str);
 		}
 		return (0);
