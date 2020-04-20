@@ -6,7 +6,7 @@
 /*   By: csouza-f <csouza-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 17:46:21 by csouza-f          #+#    #+#             */
-/*   Updated: 2020/04/17 15:51:07 by csouza-f         ###   ########.fr       */
+/*   Updated: 2020/04/20 13:36:18 by caio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char		*ft_substr(char const *s, unsigned int start, size_t len)
         i = 0;
         if (!s || !(str = malloc(len + 1)))
             return (0);
-        while (start + i < len)
+        while (i < len)
         {
             str[i] = s[start + i];
             i++;
@@ -57,34 +57,31 @@ size_t		ft_strlen(const char *s)
         return (i);
 }
 
-char    *ft_strjoin(char const *s1, char const *s2)
+char    *ft_strjoin(char *s1, char *s2)
 {
-		char		*str;
-		int			i;
-		int			j;
+		char	*str;
+		int	i;
+		int	j;
 
 		i = 0;
 		j = 0;
 		if ((str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
 		{
 			if (s1)
-			{
 				while (s1[i])
-				{
+				{	
 					str[i] = s1[i];
 					i++;
 				}
-			}
 			if (s2)
-			{
 				while (s2[j])
 				{
 					str[i] = s2[j];
 					i++;
 					j++;
 				}
-			}
 			str[i] = '\0';
+			free(s2);
 			return (str);
 		}
 		return (0);
