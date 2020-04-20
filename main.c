@@ -6,7 +6,7 @@
 /*   By: csouza-f <csouza-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 17:47:04 by csouza-f          #+#    #+#             */
-/*   Updated: 2020/04/17 20:30:08 by csouza-f         ###   ########.fr       */
+/*   Updated: 2020/04/20 13:55:14 by caio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 	int ret;
 	int i;
 
-	fd = open("tests/empty_lines", O_RDONLY);
+	fd = open("tests/alphabet", O_RDONLY);
 	i = 1;
 	ret = 1;
 	while (ret > 0)
@@ -28,8 +28,8 @@ int	main(void)
 		ret = get_next_line(fd, &buffer);
 		printf("%dº CHAMADA\n", i);
 		printf("%d : |%s|\n", ret, buffer);
+		free(buffer);
 		i++;
 	}
-	//free(buffer);
 	return (1);
 }
