@@ -6,7 +6,7 @@
 /*   By: csouza-f <csouza-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 17:46:23 by csouza-f          #+#    #+#             */
-/*   Updated: 2020/04/21 17:54:12 by caio             ###   ########.fr       */
+/*   Updated: 2020/04/21 18:02:52 by caio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_cat_clean(char *str1, char *str2, int ret, int clean)
 	char	*tmp;
 	char	*tmp2;
 	char	*aux;
-	
+
 	tmp = NULL;
 	tmp2 = NULL;
 	if (ret != 0)
@@ -38,7 +38,7 @@ char	*ft_cat_clean(char *str1, char *str2, int ret, int clean)
 	return (aux);
 }
 
-int	get_next_line(int fd, char **line)
+int		get_next_line(int fd, char **line)
 {
 	int			ret;
 	int			pos;
@@ -47,7 +47,7 @@ int	get_next_line(int fd, char **line)
 	static char	*tmp;
 
 	aux = NULL;
-	if (!(buf = (char*)malloc((BUFFER_SIZE + 1) * sizeof(char))) || 
+	if (!(buf = (char*)malloc((BUFFER_SIZE + 1) * sizeof(char))) ||
 			line == NULL || BUFFER_SIZE <= 0 || fd < 0)
 		return (-1);
 	while (ft_chrp(aux, '\n') < 0 && (ret = read(fd, buf, BUFFER_SIZE)) > 0)
@@ -63,8 +63,6 @@ int	get_next_line(int fd, char **line)
 		return (1);
 	}
 	else
-	{
 		*line = ft_substr(aux, 0, ft_strlen(aux), 1);
-		return (0);
-	}
+	return (0);
 }
