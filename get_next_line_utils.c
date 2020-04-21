@@ -6,13 +6,13 @@
 /*   By: csouza-f <csouza-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 17:46:21 by csouza-f          #+#    #+#             */
-/*   Updated: 2020/04/20 18:26:03 by caio             ###   ########.fr       */
+/*   Updated: 2020/04/21 13:08:53 by caio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char		*ft_substr(char const *s, unsigned int start, size_t len)
+char		*ft_substr(char *s, unsigned int start, size_t len, int clean)
 {
         size_t	i;
         char	*str;
@@ -26,6 +26,8 @@ char		*ft_substr(char const *s, unsigned int start, size_t len)
             i++;
         }
         str[i] = '\0';
+	if (clean == 1)
+		free(s);
         return (str);
 }
 
@@ -36,11 +38,14 @@ int		ft_strchr_pos(const char *s, int c)
 
 		i = 0;
 		str = (char*)s;
-		while (str[i])
+		if (str)
 		{
-			if (str[i] == c)
-				return (i);
-			i++;
+			while (str[i])
+			{
+				if (str[i] == c)
+					return (i);
+				i++;
+			}
 		}
 		return (-1);
 }
@@ -50,8 +55,8 @@ size_t		ft_strlen(const char *s)
         int i;
 
         i = 0;
-		if (!s || s[i] == '\0')
-			return (0);
+	if (!s || s[i] == '\0')
+		return (0);
         while (s[i])
             i++;
         return (i);

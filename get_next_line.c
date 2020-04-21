@@ -6,51 +6,61 @@
 /*   By: csouza-f <csouza-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 17:46:23 by csouza-f          #+#    #+#             */
-/*   Updated: 2020/04/20 18:37:12 by caio             ###   ########.fr       */
+/*   Updated: 2020/04/21 13:17:28 by caio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int			get_next_line(int fd, char **line)
+char	*ft_cat_clean(char *str1, char *str2, int ret, int clean)
+{
+	char	*tmp;
+	char	*tmp2;
+	char	*aux;
+
+	if (ret != 0)
+		str2[ret] = '\0';
+	if (clean == 0)
+		tmp = str1;
+	else if (clean == 1)
+		tmp = str2;
+	else if (clean == 2)
+	{
+		tmp = str1;
+		tmp2 = str2;
+	}
+	aux = ft_strjoin(str1, str2);
+	free(tmp);
+	if (clean == 2)
+		free(tmp2);
+	return (aux);
+}
+
+int	get_next_line(int fd, char **line)
 {
 	int		ret;
 	int		pos;
 	char		*aux;
-    	char		buffer[BUFFER_SIZE + 1];
+	char		buf[BUFFER_SIZE + 1];
 	static char	*tmp;
-	char		*tmp2;	
-	
+
 	aux = NULL;
 	if (line == NULL || BUFFER_SIZE <= 0 || fd < 0)
 		return (-1);
-	while ((ret = read(fd, buffer, BUFFER_SIZE)) > 0)
-	{
-		buffer[ret] = '\0';
-		tmp2 = aux;
-		aux = ft_strjoin(aux, buffer);
-		free(tmp2);
-		if ((ft_strchr_pos(aux, '\n') >= 0))
-			break ;
-	}
+	while (ft_chrp(aux, '\n') < 0 && (ret = read(fd, buf, BUFFER_SIZE)) > 0)
+		aux = ft_cat_clean(aux, buffer, ret, 0);
 	if (ret < 0)
 		return (-1);
-	tmp2 = aux;
-	aux = ft_strjoin(tmp, aux);
-	free(tmp2);
-	free(tmp);
-	if ((pos = ft_strchr_pos(aux, '\n')) >= 0)
+	aux = ft_cat_clean(tmp, aux, 0, 2);
+	if ((pos = ft_chrp(aux, '\n')) >= 0)
 	{
-		*line = ft_substr(aux, 0, pos);
-		tmp = ft_substr(aux, pos + 1, ft_strlen(aux) - (pos + 1));
-		free(aux);
+		*line = ft_substr(aux, 0, pos, 0);
+		tmp = ft_substr(aux, pos + 1, ft_strlen(aux) - (pos + 1), 1);
 		return (1);
 	}
 	else
 	{
-		*line = ft_substr(aux, 0, ft_strlen(aux));
-		free(aux);
+		*line = ft_substr(aux, 0, ft_strlen(aux), 1);
 		return (0);
 	}
-	return (-1);
 }
