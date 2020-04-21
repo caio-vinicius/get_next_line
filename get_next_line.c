@@ -6,7 +6,7 @@
 /*   By: csouza-f <csouza-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 17:46:23 by csouza-f          #+#    #+#             */
-/*   Updated: 2020/04/21 15:19:39 by caio             ###   ########.fr       */
+/*   Updated: 2020/04/21 15:21:59 by caio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ char	*ft_cat_clean(char *str1, char *str2, int ret, int clean)
 	char	*tmp;
 	char	*tmp2;
 	char	*aux;
-
+	
+	tmp = NULL;
+	tmp2 = NULL;
 	if (ret != 0)
 		str2[ret] = '\0';
 	if (clean == 0)
