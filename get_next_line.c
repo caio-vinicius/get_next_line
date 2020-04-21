@@ -6,7 +6,7 @@
 /*   By: csouza-f <csouza-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 17:46:23 by csouza-f          #+#    #+#             */
-/*   Updated: 2020/04/21 13:17:28 by caio             ###   ########.fr       */
+/*   Updated: 2020/04/21 15:19:39 by caio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	get_next_line(int fd, char **line)
 	if (line == NULL || BUFFER_SIZE <= 0 || fd < 0)
 		return (-1);
 	while (ft_chrp(aux, '\n') < 0 && (ret = read(fd, buf, BUFFER_SIZE)) > 0)
-		aux = ft_cat_clean(aux, buffer, ret, 0);
+		aux = ft_cat_clean(aux, buf, ret, 0);
 	if (ret < 0)
 		return (-1);
 	aux = ft_cat_clean(tmp, aux, 0, 2);

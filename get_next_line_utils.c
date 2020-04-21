@@ -6,7 +6,7 @@
 /*   By: csouza-f <csouza-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 17:46:21 by csouza-f          #+#    #+#             */
-/*   Updated: 2020/04/21 13:08:53 by caio             ###   ########.fr       */
+/*   Updated: 2020/04/21 15:20:24 by caio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char		*ft_substr(char *s, unsigned int start, size_t len, int clean)
         return (str);
 }
 
-int		ft_strchr_pos(const char *s, int c)
+int		ft_chrp(const char *s, int c)
 {
 		int		i;
 		char	*str;
