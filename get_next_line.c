@@ -6,7 +6,7 @@
 /*   By: csouza-f <csouza-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 17:46:23 by csouza-f          #+#    #+#             */
-/*   Updated: 2020/04/21 18:02:52 by caio             ###   ########.fr       */
+/*   Updated: 2020/06/08 17:19:55 by caio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_cat_clean(char *str1, char *str2, int ret, int clean)
 		tmp = str1;
 		tmp2 = str2;
 	}
-	aux = ft_strjoin(str1, str2);
+	aux = ft_gnl_strjoin(str1, str2);
 	free(tmp);
 	if (clean == 2)
 		free(tmp2);
@@ -58,11 +58,11 @@ int		get_next_line(int fd, char **line)
 	aux = ft_cat_clean(tmp, aux, 0, 2);
 	if ((pos = ft_chrp(aux, '\n')) >= 0)
 	{
-		*line = ft_substr(aux, 0, pos, 0);
-		tmp = ft_substr(aux, pos + 1, ft_strlen(aux) - (pos + 1), 1);
+		*line = ft_gnl_substr(aux, 0, pos, 0);
+		tmp = ft_gnl_substr(aux, pos + 1, ft_gnl_strlen(aux) - (pos + 1), 1);
 		return (1);
 	}
 	else
-		*line = ft_substr(aux, 0, ft_strlen(aux), 1);
+		*line = ft_gnl_substr(aux, 0, ft_gnl_strlen(aux), 1);
 	return (0);
 }

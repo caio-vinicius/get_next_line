@@ -6,13 +6,13 @@
 /*   By: csouza-f <csouza-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 17:46:21 by csouza-f          #+#    #+#             */
-/*   Updated: 2020/04/21 18:23:34 by caio             ###   ########.fr       */
+/*   Updated: 2020/06/08 17:23:01 by caio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_substr(char *s, unsigned int start, size_t len, int clean)
+char	*ft_gnl_substr(char *s, unsigned int start, size_t len, int clean)
 {
 	size_t	i;
 	char	*str;
@@ -50,7 +50,7 @@ int		ft_chrp(const char *s, int c)
 	return (-1);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ft_gnl_strlen(const char *s)
 {
 	int i;
 
@@ -62,7 +62,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_gnl_strjoin(char *s1, char *s2)
 {
 	char	*str;
 	int		i;
@@ -70,7 +70,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	i = 0;
 	j = 0;
-	if ((str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+	if ((str = malloc(ft_gnl_strlen(s1) + ft_gnl_strlen(s2) + 1)))
 	{
 		if (s1)
 			while (s1[i])
@@ -89,21 +89,4 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (str);
 	}
 	return (0);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	char	*str;
-	int		i;
-
-	i = 0;
-	if (!(str = (char *)malloc(ft_strlen(s1) + 1)))
-		return (0);
-	while (s1[i])
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
 }
